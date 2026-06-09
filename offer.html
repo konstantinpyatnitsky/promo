@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short-Form Growth Agency By Konstantin Pyatnitsky</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #000;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --accent: #C8F135;
+    --accent-soft: rgba(200,241,53,0.08);
+    --accent-border: rgba(200,241,53,0.25);
+    --white: #F5F5F7;
+    --muted: rgba(255,255,255,0.45);
+    --subtle: rgba(255,255,255,0.28);
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* GLOW */
+  .glow {
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(600px, 100vw);
+    height: min(600px, 100vw);
+    background: radial-gradient(circle, rgba(200,241,53,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* EYEBROW */
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  /* HERO */
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 8vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  h1 .dim { color: rgba(245,245,247,0.4); }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+  }
+
+  .guarantee-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    border-radius: 100px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 80px;
+    backdrop-filter: blur(12px);
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* DIVIDER */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 56px 0;
+  }
+
+  /* SECTION LABEL */
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 28px;
+  }
+
+  /* GLASS CARD */
+  .glass {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 18px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    padding-top: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: -0.01em;
+  }
+
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* INCLUDES */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .include-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(245,245,247,0.75);
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+  }
+
+  .include-item .check {
+    width: 16px; height: 16px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 9px;
+    color: var(--accent);
+  }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .plan {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 22px;
+    position: relative;
+    backdrop-filter: blur(20px);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .plan:hover { background: var(--surface-hover); }
+
+  .plan.featured {
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
+  }
+
+  .plan-tag {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #0A0A0A;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--subtle);
+    margin-bottom: 14px;
+  }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+
+  .plan.featured .plan-price { color: var(--accent); }
+
+  .plan-period {
+    font-size: 12px;
+    color: var(--subtle);
+    margin-bottom: 20px;
+  }
+
+  .plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .plan-feature {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .plan-feature::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .plan.featured .plan-feature { color: rgba(245,245,247,0.7); }
+
+  /* PROOF */
+  .proof-card {
+    padding: 32px;
+    margin-top: 24px;
+  }
+
+  .proof-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(245,245,247,0.8);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .proof-text strong { color: var(--white); font-weight: 600; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 16px 8px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--subtle);
+    line-height: 1.4;
+  }
+
+  .screenshots-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .screen-ph {
+    aspect-ratio: 9/16;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--subtle);
+    font-size: 12px;
+    text-align: center;
+    padding: 16px;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .screen-ph:hover { border-color: var(--accent-border); color: var(--accent); }
+  .screen-ph .ico { font-size: 22px; }
+
+  .growth-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .growth-ph {
+    aspect-ratio: 4/3;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--subtle);
+    font-size: 12px;
+    text-align: center;
+    padding: 16px;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .growth-ph:hover { border-color: var(--accent-border); color: var(--accent); }
+  .growth-ph .ico { font-size: 20px; }
+
+  .ph-sublabel {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin: 20px 0 10px;
+  }
+
+  /* GUARANTEE */
+  .guarantee-card {
+    padding: 36px;
+    margin-top: 24px;
+    border-color: var(--accent-border) !important;
+    background: var(--accent-soft) !important;
+  }
+
+  .guarantee-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .guarantee-card p {
+    font-size: 15px;
+    color: rgba(245,245,247,0.65);
+    line-height: 1.7;
+  }
+
+  .fine {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--accent-border);
+    font-size: 12px;
+    color: var(--subtle);
+    line-height: 1.6;
+  }
+
+  /* FAQ */
+  .faq { margin-top: 24px; display: flex; flex-direction: column; gap: 2px; }
+
+  .faq-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .faq-item:hover { background: var(--surface-hover); }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .faq-icon {
+    width: 20px; height: 20px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--accent);
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 24px 20px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    padding: 72px 0 0;
+  }
+
+  .cta-block h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(30px, 6vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+
+  .cta-block p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #0A0A0A;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px 40px;
+    border-radius: 100px;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .keyword-tag {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 20px;
+    letter-spacing: 0.02em;
+  }
+
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #0A0A0A;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    background: var(--surface);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    letter-spacing: -0.01em;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    backdrop-filter: blur(12px);
+  }
+
+  .btn-ghost:hover { background: var(--surface-hover); transform: translateY(-1px); }
+
+  .pricing-cta {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .final-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 40px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    margin-top: 24px;
+  }
+
+  .final-block h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .final-block p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .final-block { padding: 32px 24px; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .container { padding: 48px 20px 80px; }
+    h1 { font-size: 38px; }
+    .subtitle { font-size: 16px; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 10px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .proof-card { padding: 22px; }
+    .guarantee-card { padding: 24px; }
+    .guarantee-card h3 { font-size: 21px; }
+    .plan-price { font-size: 32px; }
+    .cta-block h2 { font-size: 28px; }
+    .glow { width: 300px; height: 300px; }
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="container">
+
+  <!-- HERO -->
+  <p class="eyebrow">Short-Form Content Agency By Konstantin Pyatnitsky</p>
+  <h1>Grow from 0<br><span style="color:#C8F135;">to 10K followers.</span></h1>
+  <p class="subtitle">Done-for-you short-form content. Strategy, scripts, editing, and posting — you only film. I handle everything else.</p>
+  <div class="guarantee-pill">
+    <span class="dot"></span>
+    If we don't hit 10K in 90 days, I work for free until we do
+  </div>
+
+  <div class="hero-btns">
+    <a class="btn-primary" href="#faq">Book a free call</a>
+    <a class="btn-ghost" href="#how">Learn more ↓</a>
+  </div>
+
+  <hr>
+
+  <!-- PROOF -->
+  <p class="label">Why trust me</p>
+  <div class="glass proof-card">
+    <p class="proof-text">
+      I started over <strong>many times</strong>. I lacked a system, experience, a mentor. I kept chasing views instead of playing the long game — and I burned out every single time.<br><br>
+      After <strong>4–5 years of attempts</strong>, trial and error, and piecing together what actually works — I built a blog that reached an <strong>international audience</strong>. In English. Which isn't even my first language.
+    </p>
+    <div class="stats-row">
+      <div class="stat"><span class="stat-num">57K</span><span class="stat-label">TikTok followers</span></div>
+      <div class="stat"><span class="stat-num">38K</span><span class="stat-label">YouTube subscribers</span></div>
+      <div class="stat"><span class="stat-num">3+</span><span class="stat-label">videos with 1M+ views</span></div>
+      <div class="stat"><span class="stat-num">5 yrs</span><span class="stat-label">of experience</span></div>
+    </div>
+
+    <p class="ph-sublabel">Viral videos — 1M+ views</p>
+    <div class="screenshots-row">
+      <div class="screen-ph"><span class="ico">📱</span>Add screenshot</div>
+      <div class="screen-ph"><span class="ico">📱</span>Add screenshot</div>
+      <div class="screen-ph"><span class="ico">📱</span>Add screenshot</div>
+    </div>
+
+    <p class="ph-sublabel">Account growth</p>
+    <div class="growth-row">
+      <div class="growth-ph"><span class="ico">📊</span>Starting point (0 followers)</div>
+      <div class="growth-ph"><span class="ico">📈</span>Current result</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- HOW IT WORKS -->
+  <p class="label" id="how">How it works</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <div>
+        <h3>Strategy & Research</h3>
+        <p>We audit your niche, study top-performing content, and build a tailored content strategy from scratch.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div>
+        <h3>Scripts & Planning</h3>
+        <p>You get a full monthly content calendar with ready-to-film scripts. Just read and record — no guessing.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div>
+        <h3>You Film</h3>
+        <p>That's all we need from you. Around 4 hours a month. No studio, no equipment — just your phone.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <div>
+        <h3>Edit, Post & Grow</h3>
+        <p>I edit every video, optimise captions and hashtags, and post across your chosen platforms. You watch the numbers go up.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- INCLUDES -->
+  <p class="label">What's included</p>
+  <div class="includes-grid">
+    <div class="include-item"><span class="check">✓</span>Niche & competitor research</div>
+    <div class="include-item"><span class="check">✓</span>Full content strategy</div>
+    <div class="include-item"><span class="check">✓</span>15–30 scripts per month</div>
+    <div class="include-item"><span class="check">✓</span>Professional video editing</div>
+    <div class="include-item"><span class="check">✓</span>Posting & scheduling</div>
+    <div class="include-item"><span class="check">✓</span>Weekly review call</div>
+    <div class="include-item"><span class="check">✓</span>Profile optimisation</div>
+    <div class="include-item"><span class="check">✓</span>Monthly performance report</div>
+  </div>
+
+  <hr>
+
+  <!-- PRICING -->
+  <p class="label">Plans</p>
+  <div class="pricing-grid">
+    <div class="plan">
+      <p class="plan-name">Starter</p>
+      <p class="plan-price">$500</p>
+      <p class="plan-period">per month</p>
+      <div class="plan-features">
+        <span class="plan-feature">15 videos/month</span>
+        <span class="plan-feature">Scripts + editing</span>
+        <span class="plan-feature">1 platform</span>
+        <span class="plan-feature">Bi-weekly call</span>
+      </div>
+    </div>
+    <div class="plan featured">
+      <span class="plan-tag">Popular</span>
+      <p class="plan-name">Growth</p>
+      <p class="plan-price">$700</p>
+      <p class="plan-period">per month</p>
+      <div class="plan-features">
+        <span class="plan-feature">20 videos/month</span>
+        <span class="plan-feature">Scripts + editing</span>
+        <span class="plan-feature">2 platforms</span>
+        <span class="plan-feature">Weekly call</span>
+      </div>
+    </div>
+    <div class="plan">
+      <p class="plan-name">Scale</p>
+      <p class="plan-price">$1,000</p>
+      <p class="plan-period">per month</p>
+      <div class="plan-features">
+        <span class="plan-feature">30 videos/month</span>
+        <span class="plan-feature">Scripts + editing</span>
+        <span class="plan-feature">3 platforms</span>
+        <span class="plan-feature">Weekly call + Slack</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-cta">
+    <a class="btn-primary" href="#faq">Get started — Book a free call</a>
+  </div>
+
+  <hr>
+
+  <!-- GUARANTEE -->
+  <p class="label">The guarantee</p>
+  <div class="glass guarantee-card">
+    <h3>0 to 10K — or I work for free.</h3>
+    <p>If your account doesn't reach 10,000 followers within 90 days of launch, I continue working at no charge until it does. Simple as that.</p>
+    <p class="fine">Guarantee applies when the client films and delivers content on the agreed schedule. Results may vary based on niche, starting point, and content quality.</p>
+  </div>
+
+  <hr>
+
+  <!-- FAQ -->
+  <p class="label" id="faq">FAQ</p>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How much time do I need to invest?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Around 4 hours a month — just filming the scripts I send you. Everything else is handled: research, scripting, editing, posting, and reporting.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        What platforms do you work with?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">TikTok, Instagram Reels, YouTube Shorts, Facebook Reels, and LinkedIn. We choose the right mix based on your niche and audience.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Do I need professional equipment?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No. A modern smartphone is all you need. Most viral short-form content is filmed on a phone — authenticity matters more than production value.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        What if I'm starting from zero followers?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">That's exactly who this is built for. The system works from zero — in fact, starting fresh often makes it easier to build the right audience from day one without baggage from old content.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How does the guarantee work exactly?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">If we don't hit 10,000 followers within 90 days of the first post going live, I keep working at no extra charge until we hit the target. The one condition: you film and deliver content on the agreed schedule.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Can I cancel anytime?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. No long-term contracts. You can cancel with 2 weeks notice. I prefer to earn your business every month rather than lock you in.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- CTA -->
+  <div class="final-block" id="faq-cta">
+    <h2>Still on the fence?</h2>
+    <p>Book a free 30-min call. No pitch, no pressure — just an honest look at whether this makes sense for you.</p>
+    <a class="btn-primary" href="#">Book a free call</a>
+    <br><br>
+    <span class="keyword-tag">or DM "GROW" on TikTok / YouTube</span>
+  </div>
+
+</div>
+
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
