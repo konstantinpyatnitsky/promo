@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1-1 Energy Coaching</title>
+<title>1-1 Fitness & Energy Transformation | Konstantin Pyatnitsky</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --black: #0f0f0f;
-    --white: #f0ede8;
-    --accent: #4d9fff;
-    --accent-dim: rgba(77,159,255,0.15);
-    --accent-border: rgba(77,159,255,0.35);
-    --mid: #1a1a1a;
-    --muted: #666460;
-    --border: rgba(240,237,232,0.08);
+    --black: #0d0d0d;
+    --surface: #141414;
+    --surface-card: #1a1a1a;
+    --white: #f5f2eb;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.12);
+    --accent-border: rgba(59, 130, 246, 0.35);
+    --muted: #807e79;
+    --border: rgba(245, 242, 235, 0.08);
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
   }
@@ -36,525 +37,391 @@
 
   a { color: inherit; text-decoration: none; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 40px;
-    background: rgba(15,15,15,0.9);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-  .nav-cta {
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    border-radius: 100px;
-    transition: opacity 0.2s;
-    white-space: nowrap;
-  }
-  .nav-cta:hover { opacity: 0.8; }
-
   /* HERO */
-  .hero {
-    min-height: 100svh;
+  .hero-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 100px 24px 72px;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 110px 40px 72px;
-    max-width: 860px;
-    margin: 0 auto;
   }
-  .hero-eyebrow {
+  .hero-badge {
     font-family: var(--font-display);
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    display: inline-block;
   }
   .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(38px, 6.5vw, 72px);
     font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.025em;
-    margin-bottom: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
+  .hero h1 span { color: var(--accent); }
   .hero-sub {
-    font-size: clamp(15px, 2.5vw, 18px);
-    color: rgba(240,237,232,0.55);
-    max-width: 500px;
-    line-height: 1.7;
-    margin-bottom: 40px;
+    font-size: clamp(16px, 2.2vw, 19px);
+    color: rgba(245, 242, 235, 0.65);
+    max-width: 580px;
+    line-height: 1.65;
+    margin-bottom: 36px;
   }
   .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     background: var(--accent);
     color: #fff;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 16px 32px;
+    padding: 18px 36px;
     border-radius: 100px;
     transition: transform 0.2s, opacity 0.2s;
     width: fit-content;
   }
-  .btn-primary:hover { transform: translateY(-2px); opacity: 0.88; }
-  .btn-primary svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
   .hero-note {
     margin-top: 14px;
     font-size: 12px;
     color: var(--muted);
-    letter-spacing: 0.02em;
   }
 
-  /* DIVIDER */
   .divider { border: none; border-top: 1px solid var(--border); }
 
-  /* SECTIONS */
   .section-wrap {
-    padding: 88px 40px;
-    max-width: 860px;
+    padding: 92px 24px;
+    max-width: 880px;
     margin: 0 auto;
   }
-  .section-label {
+  .section-tag {
     font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 44px;
+    margin-bottom: 36px;
     display: flex;
     align-items: center;
     gap: 14px;
   }
-  .section-label::after {
+  .section-tag::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--border);
   }
 
-  /* STORY */
+  /* MY STORY: ZERO BULLSHIT, ONE BEFORE/AFTER */
   .story-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 52px;
-    align-items: start;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
   }
-  .story-text h2 {
+  .story-content h2 {
     font-family: var(--font-display);
-    font-size: clamp(26px, 3.5vw, 38px);
+    font-size: clamp(28px, 3.8vw, 42px);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 22px;
-  }
-  .story-text h2 em { font-style: normal; color: var(--accent); }
-  .story-text p {
-    color: rgba(240,237,232,0.6);
-    margin-bottom: 14px;
-    font-size: 14px;
-    line-height: 1.75;
-  }
-  .story-photos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .photo-card {
-    border-radius: 10px;
-    aspect-ratio: 3/4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 14px;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .photo-card-label {
-    font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: rgba(15,15,15,0.75);
-    padding: 5px 12px;
-    border-radius: 100px;
-    position: relative;
-    z-index: 1;
-  }
-  .photo-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    color: var(--muted);
-    font-family: var(--font-display);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .photo-card.before { background: #191919; }
-  .photo-card.before .photo-card-label { color: var(--muted); }
-  .photo-card.after { background: #0d1520; border-color: rgba(77,159,255,0.15); }
-  .photo-card.after .photo-card-label { color: var(--white); }
-
-  /* OFFER */
-  .offer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    align-items: stretch;
-  }
-  .offer-card {
-    background: var(--mid);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-  }
-  .offer-card.featured {
-    border-color: var(--accent-border);
-    background: #161616;
-  }
-  .offer-tag {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 100px;
     margin-bottom: 20px;
-    width: fit-content;
   }
-  .offer-card.featured .offer-tag {
-    background: var(--accent-dim);
+  .story-content h2 span { color: var(--accent); }
+  .story-content p {
+    color: rgba(245, 242, 235, 0.65);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .comparison-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .comparison-card {
+    position: relative;
+    border-radius: 14px;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface-card);
+  }
+  .comparison-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .comparison-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+  .comparison-card.after { border-color: var(--accent-border); }
+  .comparison-card.after .comparison-label { color: #fff; background: var(--accent); }
+
+  /* INVESTMENT MINDSET BOX (NO MONEY LOSS FEAR) */
+  .mindset-card {
+    background: linear-gradient(180deg, var(--surface-card) 0%, #111 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 64px;
+  }
+  .mindset-card h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .mindset-card p {
+    color: rgba(245, 242, 235, 0.65);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  /* PRICING PLANS */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .plan-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .plan-card.vip {
+    background: #15181e;
+    border-color: var(--accent-border);
+  }
+  .plan-badge {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    width: fit-content;
+    background: rgba(245, 242, 235, 0.05);
+    color: var(--muted);
+  }
+  .plan-card.vip .plan-badge {
+    background: var(--accent-glow);
     color: var(--accent);
     border: 1px solid var(--accent-border);
   }
-  .offer-card:not(.featured) .offer-tag {
-    background: rgba(240,237,232,0.05);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-  .offer-card h3 {
+  .plan-card h3 {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 800;
-    letter-spacing: -0.01em;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
-  .offer-card > p {
-    font-size: 13px;
-    color: rgba(240,237,232,0.5);
-    line-height: 1.65;
-    margin-bottom: 20px;
+  .plan-desc {
+    font-size: 14px;
+    color: rgba(245, 242, 235, 0.55);
+    margin-bottom: 24px;
+    line-height: 1.6;
   }
-  .offer-list {
+  .plan-price {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .plan-price span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .plan-features {
     list-style: none;
+    margin-bottom: 32px;
     display: flex;
     flex-direction: column;
-    gap: 9px;
-    margin-bottom: 24px;
+    gap: 12px;
     flex: 1;
   }
-  .offer-list li {
-    font-size: 13px;
-    color: rgba(240,237,232,0.7);
+  .plan-features li {
+    font-size: 14px;
+    color: rgba(245, 242, 235, 0.75);
     display: flex;
     align-items: flex-start;
     gap: 10px;
     line-height: 1.5;
   }
-  .offer-list li::before {
-    content: '→';
+  .plan-features li::before {
+    content: '✓';
     color: var(--accent);
-    flex-shrink: 0;
-  }
-  .offer-price {
-    font-family: var(--font-display);
-    font-size: 12px;
     font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
   }
-  .offer-card.featured .offer-price { color: var(--accent); opacity: 0.8; }
-  .offer-btn {
+  .plan-btn {
     display: block;
     text-align: center;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.07em;
+    font-size: 13px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 14px;
+    padding: 16px;
     border-radius: 100px;
-    transition: opacity 0.2s, transform 0.2s;
-    margin-top: auto;
+    transition: 0.2s ease;
   }
-  .offer-btn:hover { opacity: 0.8; transform: translateY(-1px); }
-  .offer-card.featured .offer-btn {
+  .plan-card:not(.vip) .plan-btn {
+    border: 1px solid var(--border);
+    color: var(--white);
+  }
+  .plan-card:not(.vip) .plan-btn:hover {
+    background: rgba(245, 242, 235, 0.05);
+  }
+  .plan-card.vip .plan-btn {
     background: var(--accent);
     color: #fff;
   }
-  .offer-card:not(.featured) .offer-btn {
-    background: transparent;
-    color: rgba(240,237,232,0.6);
-    border: 1px solid var(--border);
+  .plan-card.vip .plan-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* CLIENT RESULTS */
+  .client-block {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .client-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .client-block p {
+    font-size: 14px;
+    color: rgba(245, 242, 235, 0.65);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .client-block h4 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin-bottom: 12px;
   }
 
   /* FAQ */
-  .faq-list { display: flex; flex-direction: column; }
-  .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+  .faq-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
   .faq-item:first-child { border-top: 1px solid var(--border); }
   .faq-q {
     font-family: var(--font-display);
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    margin-bottom: 8px;
   }
   .faq-a {
     font-size: 14px;
-    color: rgba(240,237,232,0.55);
-    line-height: 1.75;
-    max-width: 620px;
+    color: rgba(245, 242, 235, 0.55);
+    line-height: 1.7;
   }
 
-  /* FINAL CTA */
-  .final-cta-wrap {
+  /* CTA */
+  .cta-wrap {
     text-align: center;
-    padding: 100px 40px 80px;
+    padding: 100px 24px 80px;
     max-width: 640px;
     margin: 0 auto;
   }
-  .final-eyebrow {
+  .cta-wrap h2 {
     font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 24px;
-  }
-  .final-cta-wrap h2 {
-    font-family: var(--font-display);
-    font-size: clamp(30px, 6vw, 52px);
+    font-size: clamp(32px, 5.5vw, 52px);
     font-weight: 800;
     line-height: 1.05;
-    letter-spacing: -0.025em;
     margin-bottom: 18px;
   }
-  .final-cta-wrap h2 em { font-style: normal; color: var(--accent); }
-  .final-cta-wrap > p {
+  .cta-wrap h2 span { color: var(--accent); }
+  .cta-wrap p {
+    color: rgba(245, 242, 235, 0.6);
+    margin-bottom: 36px;
     font-size: 15px;
-    color: rgba(240,237,232,0.5);
-    margin-bottom: 40px;
-    line-height: 1.7;
   }
-  .final-note {
-    margin-top: 14px;
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
     font-size: 12px;
     color: var(--muted);
   }
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 28px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-  footer p { font-size: 12px; color: var(--muted); }
-
-  /* ── MOBILE ────────────────────────────────── */
-  @media (max-width: 600px) {
-    nav {
-      padding: 14px 20px;
-    }
-    .nav-logo { font-size: 12px; }
-    .nav-cta { font-size: 11px; padding: 9px 16px; }
-
-    .hero {
-      padding: 96px 20px 64px;
-      min-height: 100svh;
-    }
-    .hero-eyebrow { font-size: 10px; margin-bottom: 18px; }
-    .hero h1 { font-size: 38px; margin-bottom: 20px; }
-    .hero-sub { font-size: 15px; margin-bottom: 32px; }
-    .btn-primary { font-size: 13px; padding: 15px 28px; width: 100%; justify-content: center; }
-
+  @media (max-width: 680px) {
+    .story-grid, .plans-grid, .client-block { grid-template-columns: 1fr; gap: 24px; }
+    .hero-wrap { padding: 80px 20px 48px; }
     .section-wrap { padding: 64px 20px; }
-
-    /* story: photos above text on mobile */
-    .story-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    .story-photos {
-      order: -1;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .photo-card { aspect-ratio: 3/4; }
-
-    /* offer: stack on mobile */
-    .offer-grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .offer-card { padding: 24px 20px; }
-    /* featured card first on mobile */
-    .offer-card.featured { order: -1; }
-    .offer-btn { padding: 14px; font-size: 13px; }
-
-    .faq-item { padding: 20px 0; }
-    .faq-q { font-size: 15px; }
-    .faq-a { font-size: 13px; }
-
-    .final-cta-wrap { padding: 72px 20px 64px; }
-    .final-cta-wrap h2 { font-size: 30px; }
-
-    footer {
-      padding: 24px 20px;
-      flex-direction: column;
-      gap: 6px;
-      text-align: center;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; }
+    .btn-primary { width: 100%; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<!-- <nav>
-  <div class="nav-logo">Konstantin Pyatnitsky</div>
-  <a href="#book" class="nav-cta">Book a free call</a>
-</nav> -->
-
 <!-- HERO -->
-<div style="max-width:860px;margin:0 auto;">
-  <div class="hero">
-    <p class="hero-eyebrow">Energy &amp; Movement Coach</p>
-    <h1>Stop being tired.<br><em>Start feeling alive.</em></h1>
-    <p class="hero-sub">I help busy, low-energy people build movement into their daily life - so they have more energy, feel better and look better without spending hours in the gym.</p>
-    <a href="https://calendly.com/konstantinpyatnitsky/30min" class="btn-primary">
-      Book a free call
-      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <p class="hero-note">30 minutes · Free · No sales pitch</p>
-  </div>
+<div class="hero-wrap">
+  <span class="hero-badge">1-on-1 Fitness &amp; Energy Mentorship</span>
+  <h1>Reclaim your body.<br><span>Wake up with energy.</span></h1>
+  <p class="hero-sub">No 2-hour gym marathons. No crazy restrictive diets. A sustainable 1-on-1 system built on simple daily actions that fit your real life.</p>
+  <a href="#plans" class="btn-primary">
+    Explore 1-on-1 Plans
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <p class="hero-note">Guaranteed personal attention · Limited to 6 clients at a time</p>
 </div>
 
 <hr class="divider">
 
-<!-- STORY -->
-<div class="section-wrap" id="story">
-  <p class="section-label">My story</p>
+<!-- MY STORY: HONEST & GROUNDED -->
+<div class="section-wrap">
+  <p class="section-tag">Zero Bullshit Background</p>
   <div class="story-grid">
-    <div class="story-text">
-      <h2>I was that guy.<br><em>No system. No energy.</em></h2>
-      <p>I'd wake up tired, scroll for an hour before getting out of bed, and spend the whole day running on empty. I looked fine on the outside - but inside I had nothing.</p>
-      <p>I didn't overhaul my life overnight. I just started small. A few minutes of movement in the morning. Then a bit more. Then it became a system - and the system changed everything.</p>
-      <p>More energy. Better focus. A body I'm proud of. And last year I ran a 52.6km ultramarathon - a guy who used to struggle with a single kilometre.</p>
-      <p>That system is what I now build for you.</p>
+    <div class="story-content">
+      <h2>I started from <span>absolute zero.</span></h2>
+      <p>I wasn't born with a six-pack or elite athletic genes. A few years ago, I was dragging myself out of bed, exhausted by 2 PM, and feeling completely stuck in my own skin.</p>
+      <p>I tried complex gym routines and strict chicken-and-rice diets. I hated every second of it and always quit. Real change happened only when I stripped away the noise and focused on <strong>simple, repeatable daily habits</strong>: short functional movements at home, proper walking targets, and whole foods.</p>
+      <p>That shift gave me back my energy, transformed my physique, and rebuilt my drive for life. That exact framework is what I deliver directly to you.</p>
     </div>
-    <div class="story-photos">
-      <div class="photo-card before" style="background-image: url('before.jpg'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">Before</span>
+    <div class="comparison-box">
+      <div class="comparison-card before">
+        <img src="before.jpg" alt="Konstantin Before Transformation">
+        <span class="comparison-label">Before</span>
       </div>
-      <div class="photo-card after" style="background-image: url('after-1.jpg'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">After</span>
-      </div>
-      <div class="photo-card before" style="background-image: url('before2.jpg'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">Before</span>
-      </div>
-      <div class="photo-card after" style="background-image: url('after2.jpg'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">After</span>
-      </div>
-      <div class="photo-card after" style="background-image: url('no_energy.jpg'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">No energy</span>
-      </div>
-      <div class="photo-card after" style="background-image: url('52km.jpg'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">52.6km race</span>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- Clients -->
-<div class="section-wrap" id="story">
-  <p class="section-label">Client results</p>
-  <div class="story-grid">
-    <div class="story-text">
-      <h2>What happens when you<br><em>actually move.</em></h2>
-      <p>These aren't gym transformations. These are people who went from exhausted and stuck to showing up for themselves every single day.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- Client-1 -->
-<div class="section-wrap" id="story">
-  <div class="story-grid">
-    <div class="story-text">
-      <p>From dragging himself out of bed to crushing a 3x revenue milestone.</p>
-      <p>Look at the "Before" picture. This is what chronic low energy looks like. He wasn't incredibly overweight, but he felt heavy, sluggish, and waking up in the morning felt like a battle. When you are constantly running on empty, your business, your focus, and your physical health take the hit.</p>
-      <p>Now look at the "After". That’s what happens when you optimize your energy. He didn't just shed the extra weight and get shredded; he unlocked a completely new level of drive. And because he finally had the focus and stamina to execute, he tripled his business revenue.</p>
-      <p>The Best Part?</p>
-      <p>He didn't spend hours grueling away in the gym or starving himself on a miserable diet.</p>
-    </div>
-    <div class="story-photos">
-      <div class="photo-card before" style="background-image: url('client-1-before.png'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">Before</span>
-      </div>
-      <div class="photo-card after" style="background-image: url('client-1-after.png'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">After</span>
+      <div class="comparison-card after">
+        <img src="after.jpg" alt="Konstantin After Transformation">
+        <span class="comparison-label">Transformed</span>
       </div>
     </div>
   </div>
@@ -562,110 +429,112 @@
 
 <hr class="divider">
 
-<!-- Client-2 -->
-<div class="section-wrap" id="story">
-  <div class="story-grid">
-    <div class="story-text">
-      <p><b>Before:</b> He had no system, constantly felt tired, and struggled with poor sleep. He was totally unmotivated, preferring to stay glued to social media rather than being active.</p>
-      <p><b>After:</b> We completely changed his approach and helped him fall in love with the gym. Now, he's in incredible shape, is a professional fitness trainer, coaches top entrepreneurs, and earns over $10k per month!</p>
-    </div>
-    <div class="story-photos">
-      <div class="photo-card before" style="background-image: url('client-2-before.png'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">Before</span>
-      </div>
-      <div class="photo-card after" style="background-image: url('client-2-after.png'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">After</span>
-      </div>
-    </div>
+<!-- MINDSET: ARE YOU READY TO INVEST? -->
+<div class="section-wrap" id="plans">
+  <div class="mindset-card">
+    <span class="hero-badge" style="margin-bottom: 12px;">The Honest Question</span>
+    <h3>Are you ready to invest in yourself?</h3>
+    <p>Most people waste hundreds of dollars on unused gym memberships, random supplements, and weekend takeout trying to fix their low energy. That’s not saving money — that’s paying for frustration.</p>
+    <p>Working 1-on-1 with me isn’t an expense; it’s an investment in how you show up every single day. When your body feels athletic, your posture is upright, and your mind is clear, every area of your personal and work life levels up.</p>
   </div>
-</div>
 
-<hr class="divider">
-
-<!-- Client-3 -->
-<div class="section-wrap" id="story">
-  <div class="story-grid">
-    <div class="story-text">
-      <p>Maria's feedback: </p>
-      <p>"My 'before' was a blur of low energy, way too many sweets, and zero motivation. It felt like I was invisible.</p>
-      <p>Then I found Konstantin 1-1 Energy Coaching, and it literally changed my life. I've shed the pounds, my confidence is through the roof, and I've never felt better.</p>
-      <p>Now, the tables have turned - I'm not the one getting ignored; I'm the one politely declining dates because my inbox is overflowing! 😅"</p>
-    </div>
-    <div class="story-photos">
-      <div class="photo-card before" style="background-image: url('client-3-before.png'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">Before</span>
-      </div>
-      <div class="photo-card after" style="background-image: url('client-3-after.png'); background-size: cover; background-position: center;">
-        <span class="photo-card-label">After</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- OFFER -->
-<div class="section-wrap" id="offer">
-  <p class="section-label">What I offer</p>
-  <div class="offer-grid">
-
-    <div class="offer-card featured">
-      <span class="offer-tag">Most popular</span>
-      <h3>1-on-1 Coaching</h3>
-      <p>We build your personal system together - one that actually fits your schedule, your body and your life. No copy-paste programs.</p>
-      <ul class="offer-list">
-        <li>Personal movement &amp; energy plan</li>
-        <li>Video check-in calls</li>
-        <li>Daily support via messaging</li>
-        <li>Adjustments as you go</li>
-        <li>Minimum 3 months commitment</li>
+  <p class="section-tag">Choose Your 1-on-1 Mentorship</p>
+  
+  <div class="plans-grid">
+    <!-- BASE PLAN ($200) -->
+    <div class="plan-card">
+      <span class="plan-badge">Essential Track</span>
+      <h3>Base 1-on-1</h3>
+      <p class="plan-desc">For those who want full accountability, structured workouts, and a sustainable nutrition foundation without overcomplicating things.</p>
+      <div class="plan-price">$200 <span>/ month</span></div>
+      <ul class="plan-features">
+        <li><strong>Full custom workout programming</strong> (home or minimal equipment)</li>
+        <li><strong>2 private 1-on-1 video calls</strong> per month (strategy &amp; adjustments)</li>
+        <li><strong>24/7 direct chat support</strong> for questions &amp; form checks</li>
+        <li><strong>Nutrition foundations:</strong> Ready-to-use balanced meal blueprints</li>
+        <li>Habit &amp; energy tracking system</li>
       </ul>
-      <p class="offer-price">$400 / month</p>
-      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="offer-btn">Book a free call</a>
+      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for Base Plan</a>
     </div>
 
-    <div class="offer-card">
-      <span class="offer-tag">Self-paced</span>
-      <h3>Morning Win Routine</h3>
-      <p>Your life is the sum of your days. Your days are defined by your mornings. This is the system that makes every morning a win.</p>
-      <ul class="offer-list">
-        <li>6 modules · 15–20 min/day</li>
-        <li>Video lessons + PDF workbook/li>
-        <li>30-day habit tracker</li>
-        <li>Lifetime access</li>
+    <!-- VIP PLAN ($300) -->
+    <div class="plan-card vip">
+      <span class="plan-badge">Maximum Accountability</span>
+      <h3>VIP Transformation</h3>
+      <p class="plan-desc">The ultimate done-with-you experience. Weekly check-ins and fully tailored nutrition engineered around your exact schedule and food preferences.</p>
+      <div class="plan-price">$300 <span>/ month</span></div>
+      <ul class="plan-features">
+        <li><strong>Everything in Base included</strong></li>
+        <li><strong>4 private 1-on-1 video calls</strong> per month (weekly deep-dives)</li>
+        <li><strong>Personalized nutrition plans</strong> built for your exact body &amp; taste</li>
+        <li><strong>Priority 24/7 direct access</strong> with real-time feedback</li>
+        <li>Posture &amp; mobility daily corrective protocol</li>
       </ul>
-      <p class="offer-price">$47 one-time</p>
-      <a href="https://app.lava.top/products/f46ac530-a509-4bee-b52c-ce7e70cbbffb" class="offer-btn">Learn more</a>
+      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for VIP Mentorship</a>
     </div>
+  </div>
+</div>
 
+<hr class="divider">
+
+<!-- REAL TRANSFORMATIONS -->
+<div class="section-wrap">
+  <p class="section-tag">Real Client Results</p>
+  
+  <div class="client-block">
+    <div>
+      <h4>"From waking up drained to running his business with focus."</h4>
+      <p>He wasn’t severely overweight, but he felt heavy, foggy, and exhausted every morning. We didn't throw him into 6-day gym splits.</p>
+      <p>We dialed in simple daily movement, fixed his sleep cues, and structured clean meals. He dropped fat, regained muscle tone, and finally got the stamina to triple his daily output.</p>
+    </div>
+    <div class="comparison-box">
+      <div class="comparison-card before">
+        <img src="client-1-before.png" alt="Client 1 Before">
+        <span class="comparison-label">Before</span>
+      </div>
+      <div class="comparison-card after">
+        <img src="client-1-after.png" alt="Client 1 After">
+        <span class="comparison-label">After</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="client-block">
+    <div>
+      <h4>"No more crash diets or gym anxiety."</h4>
+      <p>She was trapped in the loop of sweets, low energy, and zero motivation. We introduced a simple 15-minute home routine and straightforward nutrition rules.</p>
+      <p>Her posture opened up, the body fat melted naturally, and her self-confidence hit an all-time high.</p>
+    </div>
+    <div class="comparison-box">
+      <div class="comparison-card before">
+        <img src="client-3-before.png" alt="Client 2 Before">
+        <span class="comparison-label">Before</span>
+      </div>
+      <div class="comparison-card after">
+        <img src="client-3-after.png" alt="Client 2 After">
+        <span class="comparison-label">After</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <hr class="divider">
 
 <!-- FAQ -->
-<div class="section-wrap" id="faq">
-  <p class="section-label">FAQ</p>
+<div class="section-wrap">
+  <p class="section-tag">Frequently Asked Questions</p>
   <div class="faq-list">
     <div class="faq-item">
-      <p class="faq-q">I have zero time. Is this really for me?</p>
-      <p class="faq-a">Yes - that's exactly who this is for. The whole approach is built around people who don't have an hour to spare. We're talking 10-20 minutes, built into what you already do. If you have time to scroll your phone in the morning, you have time for this.</p>
+      <p class="faq-q">Do I need to spend hours in the gym?</p>
+      <p class="faq-a">No. The entire philosophy is built on high-leverage simplicity. You can do the workouts at home in 20–35 minutes using minimal or bodyweight equipment.</p>
     </div>
     <div class="faq-item">
-      <p class="faq-q">I've tried fitness plans before and quit. Why would this be different?</p>
-      <p class="faq-a">Because most plans treat fitness as a separate world you have to enter and leave every day. This isn't that. We make movement part of your existing routine - so there's nothing new to "start" and nothing to maintain. It just becomes how you live.</p>
+      <p class="faq-q">Will I be put on a miserable, boring diet?</p>
+      <p class="faq-a">Never. Restrictive starvation plans fail 99% of the time. We focus on real whole foods, proper protein targets, and balanced meals that keep your cravings and energy steady.</p>
     </div>
     <div class="faq-item">
-      <p class="faq-q">Do I need any equipment or a gym membership?</p>
-      <p class="faq-a">No. Everything is designed to work at home, at the office, or wherever you are. Bodyweight, minimal space, no excuses.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">What does the free call actually look like?</p>
-      <p class="faq-a">It's a 30-minute conversation. I ask about your life, your energy levels, your schedule. You ask me anything. By the end, you'll have a clear idea of what's holding you back - and whether working together makes sense. No pressure, no pitch.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">How quickly will I see results?</p>
-      <p class="faq-a">Most people feel a difference in energy within the first week. Real, lasting changes in how you look and feel typically show up by week 3-4. This isn't a quick fix - it's a system you'll use for life.</p>
+      <p class="faq-q">How does the 15-min discovery call work?</p>
+      <p class="faq-a">We jump on a quick zero-pressure call, review where your energy and routine are currently breaking down, and decide if working together 1-on-1 is the right fit.</p>
     </div>
   </div>
 </div>
@@ -673,23 +542,18 @@
 <hr class="divider">
 
 <!-- FINAL CTA -->
-<div id="book">
-  <div class="final-cta-wrap">
-    <p class="final-eyebrow">Still here?</p>
-    <h2>Stop waiting.<br><em>Book the call.</em></h2>
-    <p>You've been tired long enough. Thirty minutes could change how every day feels from here. It's free, it's easy, and the worst that happens is you walk away with a clearer head.</p>
-    <a href="https://calendly.com/konstantinpyatnitsky/30min" class="btn-primary" style="margin: 0 auto;">
-      Book your free call
-      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <p class="final-note">30 minutes · Free · No commitment</p>
-  </div>
+<div class="cta-wrap">
+  <h2>Stop being exhausted.<br><span>Let’s build your energy.</span></h2>
+  <p>Book a free 15-minute diagnostic call. We'll audit your daily habits and map out your next 30 days.</p>
+  <a href="https://calendly.com/konstantinpyatnitsky/30min" class="btn-primary" style="margin: 0 auto;">
+    Book Your Free Call
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <p class="hero-note" style="margin-top: 14px;">15 min · Free · No high-pressure sales</p>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2026 Konstantin Pyatnitsky</p>
-  <p>Live to move.</p>
+  <p>© 2026 Konstantin Pyatnitsky · Simple habits, real life.</p>
 </footer>
 
 </body>
