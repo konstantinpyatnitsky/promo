@@ -3,32 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1-1 Fitness & Energy Transformation | Konstantin Pyatnitsky</title>
+<title>1-on-1 Mentorship | Konstantin Pyatnitsky</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --black: #0d0d0d;
-    --surface: #141414;
-    --surface-card: #1a1a1a;
-    --white: #f5f2eb;
-    --accent: #3b82f6;
-    --accent-glow: rgba(59, 130, 246, 0.12);
-    --accent-border: rgba(59, 130, 246, 0.35);
-    --muted: #807e79;
-    --border: rgba(245, 242, 235, 0.08);
-    --font-display: 'Syne', sans-serif;
+    --bg: #0c0d0e;
+    --card: #141618;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text: #f3f4f6;
+    --muted: #8b929a;
+    
+    /* Премиальный энергичный лайм вместо синего */
+    --accent: #d4ff3a;
+    --accent-dark: #000;
+    --accent-glow: rgba(212, 255, 58, 0.12);
+    --accent-border: rgba(212, 255, 58, 0.35);
+
+    --font-head: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'Inter', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--black);
-    color: var(--white);
+    background: var(--bg);
+    color: var(--text);
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.6;
@@ -37,74 +40,114 @@
 
   a { color: inherit; text-decoration: none; }
 
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+    background: rgba(12, 13, 14, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .logo {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .nav-btn {
+    background: var(--accent);
+    color: var(--accent-dark);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 100px;
+    transition: 0.2s ease;
+  }
+  .nav-btn:hover { transform: scale(1.03); opacity: 0.95; }
+
   /* HERO */
   .hero-wrap {
-    max-width: 880px;
+    max-width: 860px;
     margin: 0 auto;
-    padding: 100px 24px 72px;
-    min-height: 90vh;
+    padding: 140px 24px 80px;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  .hero-badge {
-    font-family: var(--font-display);
+  .pill {
+    font-family: var(--font-head);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 20px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pill::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
   }
   .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(38px, 6.5vw, 72px);
+    font-family: var(--font-head);
+    font-size: clamp(38px, 6.2vw, 68px);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 24px;
+    color: #fff;
   }
   .hero h1 span { color: var(--accent); }
   .hero-sub {
     font-size: clamp(16px, 2.2vw, 19px);
-    color: rgba(245, 242, 235, 0.65);
+    color: rgba(243, 244, 246, 0.7);
     max-width: 580px;
-    line-height: 1.65;
+    line-height: 1.6;
     margin-bottom: 36px;
   }
   .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     background: var(--accent);
-    color: #fff;
-    font-family: var(--font-display);
-    font-weight: 700;
+    color: var(--accent-dark);
+    font-family: var(--font-head);
+    font-weight: 800;
     font-size: 13px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 18px 36px;
+    padding: 16px 32px;
     border-radius: 100px;
-    transition: transform 0.2s, opacity 0.2s;
+    transition: 0.2s ease;
     width: fit-content;
   }
-  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
-  .hero-note {
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.95; }
+  .note {
     margin-top: 14px;
     font-size: 12px;
     color: var(--muted);
   }
 
-  .divider { border: none; border-top: 1px solid var(--border); }
+  .divider { border: none; border-top: 1px solid var(--card-border); }
 
   .section-wrap {
-    padding: 92px 24px;
-    max-width: 880px;
+    padding: 88px 24px;
+    max-width: 860px;
     margin: 0 auto;
   }
-  .section-tag {
-    font-family: var(--font-display);
+  .section-label {
+    font-family: var(--font-head);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -115,14 +158,14 @@
     align-items: center;
     gap: 14px;
   }
-  .section-tag::after {
+  .section-label::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: var(--border);
+    background: var(--card-border);
   }
 
-  /* MY STORY: ZERO BULLSHIT, ONE BEFORE/AFTER */
+  /* STORY: ZERO BS & ONE PAIR OF PHOTOS */
   .story-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -130,250 +173,258 @@
     align-items: center;
   }
   .story-content h2 {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 3.8vw, 42px);
+    font-family: var(--font-head);
+    font-size: clamp(28px, 4vw, 40px);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    color: #fff;
   }
   .story-content h2 span { color: var(--accent); }
   .story-content p {
-    color: rgba(245, 242, 235, 0.65);
+    color: rgba(243, 244, 246, 0.7);
     font-size: 15px;
-    line-height: 1.75;
-    margin-bottom: 16px;
+    line-height: 1.7;
+    margin-bottom: 14px;
   }
-  .comparison-box {
+
+  .photo-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  .comparison-card {
+  .photo-box {
     position: relative;
-    border-radius: 14px;
+    border-radius: 12px;
     aspect-ratio: 3/4;
     overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface-card);
+    border: 1px solid var(--card-border);
+    background: #111;
   }
-  .comparison-card img {
+  .photo-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .comparison-label {
+  .photo-badge {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
-    font-family: var(--font-display);
+    bottom: 10px;
+    left: 10px;
+    font-family: var(--font-head);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    background: rgba(13, 13, 13, 0.85);
-    backdrop-filter: blur(8px);
-    padding: 5px 12px;
+    background: rgba(12, 13, 14, 0.85);
+    padding: 4px 10px;
     border-radius: 100px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--card-border);
+    color: #fff;
   }
-  .comparison-card.after { border-color: var(--accent-border); }
-  .comparison-card.after .comparison-label { color: #fff; background: var(--accent); }
+  .photo-box.after { border-color: var(--accent-border); }
+  .photo-box.after .photo-badge { background: var(--accent); color: #000; }
 
-  /* INVESTMENT MINDSET BOX (NO MONEY LOSS FEAR) */
-  .mindset-card {
-    background: linear-gradient(180deg, var(--surface-card) 0%, #111 100%);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 64px;
+  /* MINDSET: ARE YOU READY TO INVEST? */
+  .mindset-box {
+    background: linear-gradient(180deg, rgba(212, 255, 58, 0.04) 0%, rgba(20, 22, 24, 0.6) 100%);
+    border: 1px solid var(--accent-border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin-bottom: 56px;
   }
-  .mindset-card h3 {
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    letter-spacing: -0.01em;
+  .mindset-box h3 {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #fff;
   }
-  .mindset-card p {
-    color: rgba(245, 242, 235, 0.65);
+  .mindset-box p {
+    color: rgba(243, 244, 246, 0.7);
     font-size: 15px;
     line-height: 1.7;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
+  .mindset-box p:last-child { margin-bottom: 0; }
 
-  /* PRICING PLANS */
+  /* OFFERS / PLANS */
   .plans-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 18px;
   }
   .plan-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 30px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 32px 26px;
     display: flex;
     flex-direction: column;
-    position: relative;
   }
   .plan-card.vip {
-    background: #15181e;
+    background: #171a16;
     border-color: var(--accent-border);
   }
-  .plan-badge {
-    font-family: var(--font-display);
+  .plan-tag {
+    font-family: var(--font-head);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 100px;
     margin-bottom: 16px;
     width: fit-content;
-    background: rgba(245, 242, 235, 0.05);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--muted);
   }
-  .plan-card.vip .plan-badge {
+  .plan-card.vip .plan-tag {
     background: var(--accent-glow);
     color: var(--accent);
     border: 1px solid var(--accent-border);
   }
   .plan-card h3 {
-    font-family: var(--font-display);
-    font-size: 24px;
+    font-family: var(--font-head);
+    font-size: 22px;
     font-weight: 800;
     margin-bottom: 8px;
+    color: #fff;
   }
   .plan-desc {
-    font-size: 14px;
-    color: rgba(245, 242, 235, 0.55);
-    margin-bottom: 24px;
+    font-size: 13px;
+    color: rgba(243, 244, 246, 0.55);
+    margin-bottom: 20px;
     line-height: 1.6;
   }
   .plan-price {
-    font-family: var(--font-display);
-    font-size: 38px;
+    font-family: var(--font-head);
+    font-size: 36px;
     font-weight: 800;
     letter-spacing: -0.02em;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    color: #fff;
     display: flex;
     align-items: baseline;
     gap: 6px;
   }
   .plan-price span {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--muted);
   }
   .plan-features {
     list-style: none;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     flex: 1;
   }
   .plan-features li {
-    font-size: 14px;
-    color: rgba(245, 242, 235, 0.75);
+    font-size: 13px;
+    color: rgba(243, 244, 246, 0.8);
     display: flex;
     align-items: flex-start;
     gap: 10px;
     line-height: 1.5;
   }
   .plan-features li::before {
-    content: '✓';
+    content: '→';
     color: var(--accent);
     font-weight: 700;
   }
   .plan-btn {
     display: block;
     text-align: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 13px;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 12px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 16px;
+    padding: 15px;
     border-radius: 100px;
     transition: 0.2s ease;
   }
   .plan-card:not(.vip) .plan-btn {
-    border: 1px solid var(--border);
-    color: var(--white);
+    border: 1px solid var(--card-border);
+    color: var(--text);
   }
   .plan-card:not(.vip) .plan-btn:hover {
-    background: rgba(245, 242, 235, 0.05);
+    background: rgba(255, 255, 255, 0.05);
   }
   .plan-card.vip .plan-btn {
     background: var(--accent);
-    color: #fff;
+    color: var(--accent-dark);
   }
-  .plan-card.vip .plan-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .plan-card.vip .plan-btn:hover { transform: translateY(-1px); opacity: 0.95; }
 
-  /* CLIENT RESULTS */
-  .client-block {
+  /* 3 CLIENTS SECTION */
+  .client-row {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
+    gap: 36px;
     align-items: center;
-    margin-bottom: 48px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--card-border);
   }
-  .client-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .client-block p {
+  .client-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .client-row h4 {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .client-row p {
     font-size: 14px;
-    color: rgba(245, 242, 235, 0.65);
-    line-height: 1.7;
-    margin-bottom: 12px;
-  }
-  .client-block h4 {
-    font-family: var(--font-display);
-    font-size: 18px;
-    margin-bottom: 12px;
+    color: rgba(243, 244, 246, 0.65);
+    line-height: 1.65;
+    margin-bottom: 10px;
   }
 
   /* FAQ */
-  .faq-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
-  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-item { padding: 20px 0; border-bottom: 1px solid var(--card-border); }
+  .faq-item:first-child { border-top: 1px solid var(--card-border); }
   .faq-q {
-    font-family: var(--font-display);
+    font-family: var(--font-head);
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    color: #fff;
   }
   .faq-a {
     font-size: 14px;
-    color: rgba(245, 242, 235, 0.55);
-    line-height: 1.7;
+    color: rgba(243, 244, 246, 0.6);
+    line-height: 1.65;
   }
 
-  /* CTA */
-  .cta-wrap {
+  /* FOOTER & FINAL CTA */
+  .final-cta {
     text-align: center;
     padding: 100px 24px 80px;
-    max-width: 640px;
+    max-width: 620px;
     margin: 0 auto;
   }
-  .cta-wrap h2 {
-    font-family: var(--font-display);
-    font-size: clamp(32px, 5.5vw, 52px);
+  .final-cta h2 {
+    font-family: var(--font-head);
+    font-size: clamp(30px, 5.5vw, 48px);
     font-weight: 800;
-    line-height: 1.05;
-    margin-bottom: 18px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #fff;
   }
-  .cta-wrap h2 span { color: var(--accent); }
-  .cta-wrap p {
-    color: rgba(245, 242, 235, 0.6);
-    margin-bottom: 36px;
+  .final-cta h2 span { color: var(--accent); }
+  .final-cta p {
+    color: rgba(243, 244, 246, 0.65);
     font-size: 15px;
+    margin-bottom: 32px;
   }
 
   footer {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--card-border);
     padding: 24px;
     text-align: center;
     font-size: 12px;
@@ -381,47 +432,53 @@
   }
 
   @media (max-width: 680px) {
-    .story-grid, .plans-grid, .client-block { grid-template-columns: 1fr; gap: 24px; }
-    .hero-wrap { padding: 80px 20px 48px; }
-    .section-wrap { padding: 64px 20px; }
+    header { padding: 14px 20px; }
+    .story-grid, .plans-grid, .client-row { grid-template-columns: 1fr; gap: 24px; }
+    .hero-wrap { padding: 110px 20px 48px; }
+    .section-wrap { padding: 60px 20px; }
     .btn-primary { width: 100%; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
+<header>
+  <div class="logo">Konstantin Pyatnitsky</div>
+  <a href="#plans" class="nav-btn">Start 1-on-1</a>
+</header>
+
 <!-- HERO -->
 <div class="hero-wrap">
-  <span class="hero-badge">1-on-1 Fitness &amp; Energy Mentorship</span>
-  <h1>Reclaim your body.<br><span>Wake up with energy.</span></h1>
-  <p class="hero-sub">No 2-hour gym marathons. No crazy restrictive diets. A sustainable 1-on-1 system built on simple daily actions that fit your real life.</p>
+  <div class="pill">Simple Daily Movement · Real Energy</div>
+  <h1>Stop being tired.<br><span>Start feeling alive.</span></h1>
+  <p class="hero-sub">No 2-hour gym marathons. No miserable diets. A 1-on-1 coaching system built on simple, high-leverage habits that fit directly into your daily routine.</p>
   <a href="#plans" class="btn-primary">
-    Explore 1-on-1 Plans
-    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Choose your plan
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <p class="hero-note">Guaranteed personal attention · Limited to 6 clients at a time</p>
+  <p class="note">Direct personal guidance · Limited to 6 clients at a time</p>
 </div>
 
 <hr class="divider">
 
-<!-- MY STORY: HONEST & GROUNDED -->
+<!-- STORY: ZERO BS -->
 <div class="section-wrap">
-  <p class="section-tag">Zero Bullshit Background</p>
+  <p class="section-label">My own transformation</p>
   <div class="story-grid">
     <div class="story-content">
       <h2>I started from <span>absolute zero.</span></h2>
-      <p>I wasn't born with a six-pack or elite athletic genes. A few years ago, I was dragging myself out of bed, exhausted by 2 PM, and feeling completely stuck in my own skin.</p>
-      <p>I tried complex gym routines and strict chicken-and-rice diets. I hated every second of it and always quit. Real change happened only when I stripped away the noise and focused on <strong>simple, repeatable daily habits</strong>: short functional movements at home, proper walking targets, and whole foods.</p>
-      <p>That shift gave me back my energy, transformed my physique, and rebuilt my drive for life. That exact framework is what I deliver directly to you.</p>
+      <p>A few years ago, I was completely drained. Waking up tired, dragging myself through the workday, and feeling trapped in a body that had zero drive.</p>
+      <p>I tried extreme gym splits and restrictive meal plans. I quit every single time. Real change only happened when I cut out the complexity and focused on <strong>simple, repeatable daily actions</strong>: short functional movements at home, step goals, and real, unprocessed foods.</p>
+      <p>That shift gave me back my energy, built an athletic body, and completely renewed my hunger for life. That exact system is what we build together for you.</p>
     </div>
-    <div class="comparison-box">
-      <div class="comparison-card before">
-        <img src="before.jpg" alt="Konstantin Before Transformation">
-        <span class="comparison-label">Before</span>
+    <div class="photo-pair">
+      <div class="photo-box">
+        <img src="before.jpg" alt="Konstantin Before">
+        <span class="photo-badge">Before</span>
       </div>
-      <div class="comparison-card after">
-        <img src="after.jpg" alt="Konstantin After Transformation">
-        <span class="comparison-label">Transformed</span>
+      <div class="photo-box after">
+        <img src="after.jpg" alt="Konstantin Transformed">
+        <span class="photo-badge">Now</span>
       </div>
     </div>
   </div>
@@ -429,90 +486,111 @@
 
 <hr class="divider">
 
-<!-- MINDSET: ARE YOU READY TO INVEST? -->
+<!-- PRICING & MINDSET -->
 <div class="section-wrap" id="plans">
-  <div class="mindset-card">
-    <span class="hero-badge" style="margin-bottom: 12px;">The Honest Question</span>
+  <div class="mindset-box">
+    <div class="pill" style="margin-bottom: 8px;">The Real Question</div>
     <h3>Are you ready to invest in yourself?</h3>
-    <p>Most people waste hundreds of dollars on unused gym memberships, random supplements, and weekend takeout trying to fix their low energy. That’s not saving money — that’s paying for frustration.</p>
-    <p>Working 1-on-1 with me isn’t an expense; it’s an investment in how you show up every single day. When your body feels athletic, your posture is upright, and your mind is clear, every area of your personal and work life levels up.</p>
+    <p>Think about how much money gets leaked on unused gym memberships, random wellness pills, or expensive coffees and takeout just to fight through afternoon brain fog. That isn't saving money — it’s paying to stay stuck.</p>
+    <p>1-on-1 coaching is not an expense. It is a direct investment in your daily stamina, your posture, and your mental clarity. When your physical energy is locked in, every other part of your life and career moves with momentum.</p>
   </div>
 
-  <p class="section-tag">Choose Your 1-on-1 Mentorship</p>
+  <p class="section-label">Choose your 1-on-1 plan</p>
   
   <div class="plans-grid">
     <!-- BASE PLAN ($200) -->
     <div class="plan-card">
-      <span class="plan-badge">Essential Track</span>
+      <span class="plan-tag">Essential Track</span>
       <h3>Base 1-on-1</h3>
-      <p class="plan-desc">For those who want full accountability, structured workouts, and a sustainable nutrition foundation without overcomplicating things.</p>
+      <p class="plan-desc">For those who want direct accountability, clear home-workout guidance, and simple nutrition blueprints without overthinking.</p>
       <div class="plan-price">$200 <span>/ month</span></div>
       <ul class="plan-features">
-        <li><strong>Full custom workout programming</strong> (home or minimal equipment)</li>
-        <li><strong>2 private 1-on-1 video calls</strong> per month (strategy &amp; adjustments)</li>
-        <li><strong>24/7 direct chat support</strong> for questions &amp; form checks</li>
-        <li><strong>Nutrition foundations:</strong> Ready-to-use balanced meal blueprints</li>
-        <li>Habit &amp; energy tracking system</li>
+        <li><strong>Full custom workout plan</strong> (home or minimal equipment)</li>
+        <li><strong>2 private video calls per month</strong> (progress review &amp; strategy)</li>
+        <li><strong>24/7 direct messaging support</strong> for form checks &amp; questions</li>
+        <li><strong>Nutrition foundations:</strong> Simple, balanced meal blueprints</li>
+        <li>Energy &amp; habit tracking system</li>
       </ul>
-      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for Base Plan</a>
+      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for Base</a>
     </div>
 
     <!-- VIP PLAN ($300) -->
     <div class="plan-card vip">
-      <span class="plan-badge">Maximum Accountability</span>
+      <span class="plan-tag">High Touch</span>
       <h3>VIP Transformation</h3>
-      <p class="plan-desc">The ultimate done-with-you experience. Weekly check-ins and fully tailored nutrition engineered around your exact schedule and food preferences.</p>
+      <p class="plan-desc">The ultimate hands-on partnership. Weekly check-ins and fully customized nutrition engineered around your exact lifestyle and taste.</p>
       <div class="plan-price">$300 <span>/ month</span></div>
       <ul class="plan-features">
         <li><strong>Everything in Base included</strong></li>
-        <li><strong>4 private 1-on-1 video calls</strong> per month (weekly deep-dives)</li>
-        <li><strong>Personalized nutrition plans</strong> built for your exact body &amp; taste</li>
+        <li><strong>4 private video calls per month</strong> (weekly 1-on-1 strategy sessions)</li>
+        <li><strong>Tailored nutrition protocols</strong> customized to your schedule &amp; food choices</li>
         <li><strong>Priority 24/7 direct access</strong> with real-time feedback</li>
-        <li>Posture &amp; mobility daily corrective protocol</li>
+        <li>Daily posture &amp; mobility correction routines</li>
       </ul>
-      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for VIP Mentorship</a>
+      <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for VIP</a>
     </div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- REAL TRANSFORMATIONS -->
+<!-- 3 REAL CLIENT RESULTS -->
 <div class="section-wrap">
-  <p class="section-tag">Real Client Results</p>
+  <p class="section-label">Real Client Results</p>
   
-  <div class="client-block">
+  <!-- Client 1 -->
+  <div class="client-row">
     <div>
-      <h4>"From waking up drained to running his business with focus."</h4>
-      <p>He wasn’t severely overweight, but he felt heavy, foggy, and exhausted every morning. We didn't throw him into 6-day gym splits.</p>
-      <p>We dialed in simple daily movement, fixed his sleep cues, and structured clean meals. He dropped fat, regained muscle tone, and finally got the stamina to triple his daily output.</p>
+      <h4>"From chronic low energy to a 3x revenue breakthrough."</h4>
+      <p>He was not heavily overweight, but felt sluggish and mentally drained every single morning. We didn't send him to the gym for 2 hours.</p>
+      <p>We dialed in simple daily movement, fixed his sleep cues, and organized whole foods. He dropped stubborn body fat, sharpened his focus, and had the stamina to 3x his monthly revenue.</p>
     </div>
-    <div class="comparison-box">
-      <div class="comparison-card before">
+    <div class="photo-pair">
+      <div class="photo-box">
         <img src="client-1-before.png" alt="Client 1 Before">
-        <span class="comparison-label">Before</span>
+        <span class="photo-badge">Before</span>
       </div>
-      <div class="comparison-card after">
+      <div class="photo-box after">
         <img src="client-1-after.png" alt="Client 1 After">
-        <span class="comparison-label">After</span>
+        <span class="photo-badge">After</span>
       </div>
     </div>
   </div>
 
-  <div class="client-block">
+  <!-- Client 2 -->
+  <div class="client-row">
     <div>
-      <h4>"No more crash diets or gym anxiety."</h4>
-      <p>She was trapped in the loop of sweets, low energy, and zero motivation. We introduced a simple 15-minute home routine and straightforward nutrition rules.</p>
-      <p>Her posture opened up, the body fat melted naturally, and her self-confidence hit an all-time high.</p>
+      <h4>"From zero system and social media fatigue to high-ticket coach."</h4>
+      <p>He was stuck in a rut with poor sleep, no workout consistency, and zero daily drive. We completely transformed his relationship with movement.</p>
+      <p>Now in peak athletic condition, he built a sustainable high-performance lifestyle, became a coach himself, and operates at an entirely different tier of energy.</p>
     </div>
-    <div class="comparison-box">
-      <div class="comparison-card before">
-        <img src="client-3-before.png" alt="Client 2 Before">
-        <span class="comparison-label">Before</span>
+    <div class="photo-pair">
+      <div class="photo-box">
+        <img src="client-2-before.png" alt="Client 2 Before">
+        <span class="photo-badge">Before</span>
       </div>
-      <div class="comparison-card after">
-        <img src="client-3-after.png" alt="Client 2 After">
-        <span class="comparison-label">After</span>
+      <div class="photo-box after">
+        <img src="client-2-after.png" alt="Client 2 After">
+        <span class="photo-badge">After</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client 3 -->
+  <div class="client-row">
+    <div>
+      <h4>"Confidence through the roof — no more crash diets."</h4>
+      <p>Maria's life was a cycle of low energy, sugar cravings, and fading motivation. We replaced that chaos with an easy 15-minute home routine and clean, intuitive eating.</p>
+      <p>She dropped body fat effortlessly, fixed her posture, and unlocked an unapologetic confidence she hadn't felt in years.</p>
+    </div>
+    <div class="photo-pair">
+      <div class="photo-box">
+        <img src="client-3-before.png" alt="Client 3 Before">
+        <span class="photo-badge">Before</span>
+      </div>
+      <div class="photo-box after">
+        <img src="client-3-after.png" alt="Client 3 After">
+        <span class="photo-badge">After</span>
       </div>
     </div>
   </div>
@@ -522,38 +600,36 @@
 
 <!-- FAQ -->
 <div class="section-wrap">
-  <p class="section-tag">Frequently Asked Questions</p>
-  <div class="faq-list">
-    <div class="faq-item">
-      <p class="faq-q">Do I need to spend hours in the gym?</p>
-      <p class="faq-a">No. The entire philosophy is built on high-leverage simplicity. You can do the workouts at home in 20–35 minutes using minimal or bodyweight equipment.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Will I be put on a miserable, boring diet?</p>
-      <p class="faq-a">Never. Restrictive starvation plans fail 99% of the time. We focus on real whole foods, proper protein targets, and balanced meals that keep your cravings and energy steady.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">How does the 15-min discovery call work?</p>
-      <p class="faq-a">We jump on a quick zero-pressure call, review where your energy and routine are currently breaking down, and decide if working together 1-on-1 is the right fit.</p>
-    </div>
+  <p class="section-label">FAQ</p>
+  <div class="faq-item">
+    <p class="faq-q">Do I need to spend hours in the gym?</p>
+    <p class="faq-a">No. The entire system is designed for people who have limited time. You can complete workouts at home in 20–35 minutes with minimal or bodyweight equipment.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Will I be forced into a restrictive, boring diet?</p>
+    <p class="faq-a">Never. Starvation diets ruin metabolism and energy. We focus on nutrient-dense real foods, proper protein intake, and practical meals that keep your energy steady without guilt.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">What happens on the free introductory call?</p>
+    <p class="faq-a">It's a straightforward 15-minute diagnostic chat. We review your daily schedule, pinpoint where your energy and consistency drop off, and decide together if 1-on-1 mentorship fits your goals.</p>
   </div>
 </div>
 
 <hr class="divider">
 
 <!-- FINAL CTA -->
-<div class="cta-wrap">
-  <h2>Stop being exhausted.<br><span>Let’s build your energy.</span></h2>
-  <p>Book a free 15-minute diagnostic call. We'll audit your daily habits and map out your next 30 days.</p>
+<div class="final-cta">
+  <h2>Stop running on empty.<br><span>Let's build your energy.</span></h2>
+  <p>Book a free 15-minute diagnostic call. We'll map out your routine and see what's holding your body back.</p>
   <a href="https://calendly.com/konstantinpyatnitsky/30min" class="btn-primary" style="margin: 0 auto;">
     Book Your Free Call
-    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <p class="hero-note" style="margin-top: 14px;">15 min · Free · No high-pressure sales</p>
+  <p class="note" style="margin-top: 14px;">15 min · Free · Zero sales pressure</p>
 </div>
 
 <footer>
-  <p>© 2026 Konstantin Pyatnitsky · Simple habits, real life.</p>
+  <p>© 2026 Konstantin Pyatnitsky · Simple actions, real life.</p>
 </footer>
 
 </body>
