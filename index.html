@@ -342,25 +342,40 @@
   }
   .plan-features {
     list-style: none;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px; /* четкое разделение между пунктами */
     flex: 1;
   }
   .plan-features li {
-    font-size: 13px;
-    color: rgba(243, 244, 246, 0.85);
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    line-height: 1.45;
+    gap: 12px;
   }
   .plan-features li::before {
     content: '→';
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.3;
     flex-shrink: 0;
+  }
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .feature-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .feature-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
   }
   .plan-btn {
     display: block;
@@ -515,14 +530,13 @@
 
 <!-- HERO -->
 <div class="hero-wrap">
-  <div class="pill">Simple Daily Movement · Real Energy</div>
-  <h1>Stop being tired.<br><span>Start feeling alive.</span></h1>
-  <p class="hero-sub">No 2-hour gym marathons. No miserable diets. A 1-on-1 coaching system built on simple, high-leverage habits that fit directly into your daily routine.</p>
+  <h1>Get in the best shape of your life.<br><span>Without ruining your lifestyle.</span></h1>
+  <p class="hero-sub">No 2-hour gym marathons. No extreme diets. A 1-on-1 system of simple daily habits that get you lean, double your energy, and make you feel alive again.</p>
   <a href="#plans" class="btn-primary">
     Choose your plan
     <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <p class="note">Direct personal guidance · Limited to 6 clients at a time</p>
+  <p class="note">Direct personal guidance · Limited to 6 spots</p>
 </div>
 
 <hr class="divider">
@@ -568,14 +582,39 @@
     <div class="plan-card">
       <span class="plan-tag">Essential Track</span>
       <h3>Base 1-on-1</h3>
-      <p class="plan-desc">For those who want direct accountability, clear home-workout guidance, and simple nutrition blueprints without overthinking.</p>
+      <p class="plan-desc">For those who want clear direction, accountability, and a simple body transformation without overcomplicating things.</p>
       <div class="plan-price">$200 <span>/ month</span></div>
       <ul class="plan-features">
-        <li><strong>Full custom workout plan</strong> (home or minimal equipment)</li>
-        <li><strong>2 private video calls per month</strong> (progress review &amp; strategy)</li>
-        <li><strong>24/7 direct messaging support</strong> for form checks &amp; questions</li>
-        <li><strong>Nutrition foundations:</strong> Simple, balanced meal blueprints</li>
-        <li>Energy &amp; habit tracking system</li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Full custom workout plan</span>
+            <span class="feature-sub">Built for home or minimal gear (20–35 min)</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">2 private video calls / month</span>
+            <span class="feature-sub">Bi-weekly deep-dives &amp; progress adjustments</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">24/7 direct messaging access</span>
+            <span class="feature-sub">Fast answers, form checks &amp; daily accountability</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Nutrition foundations</span>
+            <span class="feature-sub">Ready-to-use blueprints with real, whole foods</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Energy &amp; habit tracker</span>
+            <span class="feature-sub">Daily system to lock in consistency effortlessly</span>
+          </div>
+        </li>
       </ul>
       <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for Base</a>
     </div>
@@ -584,14 +623,39 @@
     <div class="plan-card vip">
       <span class="plan-tag">High Touch</span>
       <h3>VIP Transformation</h3>
-      <p class="plan-desc">The ultimate hands-on partnership. Weekly check-ins and fully customized nutrition engineered around your exact lifestyle and taste.</p>
+      <p class="plan-desc">The ultimate hands-on partnership. Weekly 1-on-1 coaching calls and nutrition tailored to your exact daily routine and taste.</p>
       <div class="plan-price">$300 <span>/ month</span></div>
       <ul class="plan-features">
-        <li><strong>Everything in Base included</strong></li>
-        <li><strong>4 private video calls per month</strong> (weekly 1-on-1 strategy sessions)</li>
-        <li><strong>Tailored nutrition protocols</strong> customized to your schedule &amp; food choices</li>
-        <li><strong>Priority 24/7 direct access</strong> with real-time feedback</li>
-        <li>Daily posture &amp; mobility correction routines</li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Everything in Base included</span>
+            <span class="feature-sub">All core workouts and habit tracking frameworks</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">4 private video calls / month</span>
+            <span class="feature-sub">Weekly 1-on-1 strategy &amp; mindset reviews</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Tailored nutrition protocols</span>
+            <span class="feature-sub">Custom-built around your schedule and food choices</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Priority 24/7 direct support</span>
+            <span class="feature-sub">Instant feedback &amp; real-time routine tweaks</span>
+          </div>
+        </li>
+        <li>
+          <div class="feature-text">
+            <span class="feature-title">Daily posture &amp; mobility fix</span>
+            <span class="feature-sub">Targeted routines to erase desk-slouch &amp; neck pain</span>
+          </div>
+        </li>
       </ul>
       <a href="https://calendly.com/konstantinpyatnitsky/30min" class="plan-btn">Apply for VIP</a>
     </div>
